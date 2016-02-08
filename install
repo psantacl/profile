@@ -1,10 +1,10 @@
-if [ -f .profile ]; then
+if [ -f ~/.profile ]; then
   echo
   echo "Moving current .profile to $PROFILE_PATH/userprofile.conf"
   mv .profile $PROFILE_PATH/userprofile.conf
 fi
 
-ln -s .profile.d/core/init .profile
+ln -s init ~/.profile
 
 for BLOCKING_RC in .bashrc .login .bashprofile; do
   if [ -f $BLOCKING_RC ]; then

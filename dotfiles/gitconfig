@@ -3,7 +3,8 @@
 	name = Paul Santa Clara 
 [core]
 	excludesfile = /home/psantaclara/.gitignore
-
+[push]
+    default = upstream
 [color]
         ui = auto
         diff = auto

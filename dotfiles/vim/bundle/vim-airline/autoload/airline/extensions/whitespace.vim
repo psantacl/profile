@@ -1,9 +1,15 @@
-" MIT License. Copyright (c) 2013-2016 Bailey Ling.
+" MIT License. Copyright (c) 2013-2015 Bailey Ling.
 " vim: et ts=2 sts=2 sw=2
 
 " http://got-ravings.blogspot.com/2008/10/vim-pr0n-statusline-whitespace-flags.html
 
-let s:show_message = get(g:, 'airline#extensions#whitespace#show_message', 1)
+" for backwards compatibility
+if exists('g:airline_detect_whitespace')
+  let s:show_message = g:airline_detect_whitespace == 1
+else
+  let s:show_message = get(g:, 'airline#extensions#whitespace#show_message', 1)
+endif
+
 let s:symbol = get(g:, 'airline#extensions#whitespace#symbol', g:airline_symbols.whitespace)
 let s:default_checks = ['indent', 'trailing']
 
@@ -43,14 +49,7 @@ function! airline#extensions#whitespace#check()
 
     let trailing = 0
     if index(checks, 'trailing') > -1
-      try
-        let regexp = get(g:, 'airline#extensions#whitespace#trailing_regexp', '\s$')
-        let trailing = search(regexp, 'nw')
-      catch
-        echomsg 'airline#whitespace: error occured evaluating '. regexp
-        echomsg v:exception
-        return ''
-      endtry
+      let trailing = search('\s$', 'nw')
     endif
 
     let mixed = 0

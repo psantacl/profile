@@ -71,7 +71,7 @@ let g:solarized_termcolors=256
 set background=dark
 colorscheme apprentice "seoul256
 syntax on
-set relativenumber
+"set relativenumber
 set nu
 set cursorline
 set numberwidth=5
